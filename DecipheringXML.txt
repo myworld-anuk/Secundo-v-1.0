@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+XML declaration: says this is written in UTF-8 text and version XML(usually 1.0)
+
+The <!DOCTYPE score-partwise ...>
+This is the Document Type Declaration (DTD); it tells any program that opens the file:
+“This XML document must follow the rules defined in the score-partwise DTD from MusicXML.”
+Defines which elements are allowed, their order, and attributes
+
+<score-partwise version="4.0">
+n XML, there must be exactly one top-level element that encloses everything else
+Mine is this line in the example WholeNote file
+
+<work><work-title>Untitled score</work-title></work>
+Contains the title shown at the top of the page
+
+<identification> ... </identification>
+Who/what made the file, and when (e.g., MuseScore 4.5.2, date). The many <supports.../> 
+lines just display which notation features the software handles
+
+<defaults> ... </defaults>
+Page size, margins, staff line widths, and fonts; these affect engraving (how it looks), 
+not the musical meaning
+
+<credit...> ... </credit>
+Positioned text for title/subtitle on page 1 
+Engraving coordinates like default-x/default-y place the words visually
+
+<part-list> 
+sets up what instruments exist, how they’re labeled in the score, and how they 
+should sound in playback
+
+<part id="P1">
+This is where the actual notes and rests are defined
+
+<attributes>
+Sets up the “environment” of a measure
+
+<note default-x="82.01" default-y="-10">
+A musical event. Can be:
+- A pitched note (with <pitch><step>D</step><octave>5</octave>)
+- A rest (with <rest/>).
+- Attributes like duration, voice, staff say how long it lasts, which voice it 
+belongs to, and where to draw it.
