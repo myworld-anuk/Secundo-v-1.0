@@ -25,7 +25,7 @@ export const ConversionActions = ({ hasFile }: ConversionActionsProps) => {
               Convert to MusicXML
             </h3>
             <p className="text-sm text-muted-foreground">
-              Once you implement your conversion logic, this section will process your sheet music
+              Once conversion logic is immplemented, this section will process the sheet music
               and generate MusicXML output.
             </p>
           </div>
