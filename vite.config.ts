@@ -5,8 +5,12 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/Secundo-v-1.0/", // 👈 Important: your GitHub repo name here
+  build: {
+    outDir: "dist", // 👈 the folder GitHub Pages will publish
+  },
   server: {
-    host: "::",
+    host: "0.0.0.0",
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
