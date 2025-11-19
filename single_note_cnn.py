@@ -159,7 +159,7 @@ def build_cnn(n_classes):
 # -----------------------------
 # MusicXML (single note helper)
 # -----------------------------
-def write_single_note_musicxml(pitch_name, out_path="single_note.xml", divisions=8, duration_type="quarter",
+def write_single_note_musicxml(pitch_name, out_path="single_note.xml", divisions=8, duration_type="whole",
                                beats=4, beat_type=4, clef_sign="G", clef_line=2, key_fifths=0):
     from xml.etree.ElementTree import Element, SubElement, tostring
     from xml.dom import minidom
@@ -279,7 +279,11 @@ def predict_image(args):
     # Optional: write a one-note MusicXML with that pitch
     if args.write_musicxml:
         out_xml = Path(args.out_xml or "predicted_note.xml")
-        path = write_single_note_musicxml(pred_class, out_path=str(out_xml))
+        path = write_single_note_musicxml(
+            pred_class,
+            out_path=str(out_xml),
+            duration_type="whole"
+        )
         print(f"Wrote MusicXML: {path}")
 
 # -----------------------------
