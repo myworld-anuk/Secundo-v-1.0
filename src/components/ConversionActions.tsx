@@ -1,55 +1,60 @@
-import { Download, Sparkles } from "lucide-react";
+// src/components/ConversionActions.tsx
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { toast } from "sonner";
 
 interface ConversionActionsProps {
   hasFile: boolean;
+  isLoading: boolean;
+  onConvert: () => void;
+  xml: string | null;
+  downloadUrl: string | null;
 }
 
-export const ConversionActions = ({ hasFile }: ConversionActionsProps) => {
-  const handleConvert = () => {
-    toast.info("Conversion logic will be implemented here");
-  };
-
-  const handleDownload = () => {
-    toast.info("Download functionality will be available after conversion");
-  };
-
+export const ConversionActions = ({
+  hasFile,
+  isLoading,
+  onConvert,
+  xml,
+  downloadUrl,
+}: ConversionActionsProps) => {
   return (
-    <Card className="bg-gradient-primary p-1 shadow-elegant">
-      <div className="bg-card rounded-lg p-6">
-        <div className="flex flex-col gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-card-foreground mb-2">
-              Convert to MusicXML
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Once conversion logic is immplemented, this section will process the sheet music
-              and generate MusicXML output.
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <Button
-              onClick={handleConvert}
-              disabled={!hasFile}
-              className="flex-1 bg-gradient-primary hover:opacity-90 transition-opacity"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Convert
-            </Button>
-            <Button
-              onClick={handleDownload}
-              disabled={!hasFile}
-              variant="outline"
-              className="flex-1"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
+    <div className="space-y-4">
+      <Card className="p-4 shadow-soft">
+        <h3 className="font-semibold mb-2 text-card-foreground">
+          Convert to MusicXML
+        </h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          Click convert to run the OMR model on your uploaded measure.
+        </p>
+        <Button
+          onClick={onConvert}
+          disabled={!hasFile || isLoading}
+          className="w-full"
+        >
+          {isLoading ? "Converting…" : "Convert to MusicXML"}
+        </Button>
+      </Card>
+
+      {xml && (
+        <Card className="p-4 shadow-soft">
+          <h4 className="font-semibold mb-2 text-card-foreground">
+            MusicXML Preview
+          </h4>
+          <pre className="text-xs max-h-48 overflow-auto whitespace-pre-wrap bg-muted p-2 rounded-md">
+            {xml}
+          </pre>
+        </Card>
+      )}
+
+      {downloadUrl && (
+        <a
+          href={downloadUrl}
+          download="measure.musicxml"
+          className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-semibold shadow"
+        >
+          Download MusicXML
+        </a>
+      )}
+    </div>
   );
 };
