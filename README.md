@@ -1,7 +1,10 @@
 # Secundo-v-1.0
 
-Overview:
+Secundo is an Optical Music Recognition (OMR) system that converts images of sheet music into MusicXML, a standard format supported by notation software such as MuseScore and Finale. The goal is to remove manual transcription by allowing users to upload scanned or photographed sheet music and receive an editable digital score.
 
-Secundo is an Optical Music Recognition (OMR) project that converts images of sheet music into MusicXML, a universal format for digital score editors. The goal is to allow users to upload either printed or handwritten scores and receive a valid MusicXML file that can be opened in notation software like MuseScore or Finale. This removes the need for manual transcription, enabling composers to share and edit their work more efficiently.
+The project is built in Python and combines classical image processing with a PyTorch-based CNN to recognize musical symbols. A preprocessing pipeline corrects skew, normalizes layout, and prepares note images for classification. Recognized symbols are then programmatically assembled into a valid MusicXML file.
 
-The project is built in Python using PyTorch for machine learning components and standard image processing libraries.
+Secundo includes a lightweight backend service and web interface that together provide an end-to-end pipeline from image upload to downloadable MusicXML output.
+
+Key technologies: Python, PyTorch, OpenCV, CNNs, MusicXML, Flask
+Focus areas: computer vision, deep learning, structured data generation, end-to-end ML systems
