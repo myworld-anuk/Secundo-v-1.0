@@ -6,5 +6,4 @@ The project is built in Python and combines classical image processing with a Py
 
 Secundo includes a lightweight backend service and web interface that together provide an end-to-end pipeline from image upload to downloadable MusicXML output.
 
-Key technologies: Python, PyTorch, OpenCV, CNNs, MusicXML, Flask
-Focus areas: computer vision, deep learning, structured data generation, end-to-end ML systems
+Key technologies: Python, PyTorch, OpenCV, CNNs, FastAPI, MusicXML, Flask
